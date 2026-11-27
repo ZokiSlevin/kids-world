@@ -1,0 +1,18 @@
+'use strict';
+(()=>{
+ const number=v=>Number.isFinite(+v)?Math.max(0,+v):0;
+ const fields=['seconds','plays','wins','correct','wrong','discarded','journeys'];
+ const blank=()=>Object.fromEntries(fields.map(k=>[k,0]));
+ const day=(d=new Date())=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+ const ensure=p=>{if(!p.family||typeof p.family!=='object'||Array.isArray(p.family)||p.family.version!==1){p.family={version:1,dailyMinutes:0,reminded:'',history:{},legacy:{}};for(const [id,s] of Object.entries(p.stats||{})){p.family.legacy[id]={...blank(),...Object.fromEntries(['seconds','plays','wins','correct','wrong'].map(k=>[k,number(s[k])]))}}}const f=p.family;f.history=f.history&&typeof f.history==='object'&&!Array.isArray(f.history)?f.history:{};f.legacy=f.legacy&&typeof f.legacy==='object'&&!Array.isArray(f.legacy)?f.legacy:{};if(!f.journeyBaseline){for(const id of Object.keys(p.journeys||{})){const historical=Math.max(0,(window.KWJourney?.level(p,id)||1)-1);const tracked=Object.values(f.history).reduce((n,d)=>n+number(d?.[id]?.journeys),0);if(!f.legacy[id])f.legacy[id]=blank();f.legacy[id].journeys=Math.max(0,historical-tracked)}f.journeyBaseline=true}f.dailyMinutes=[0,15,20,30,45,60,90,120].includes(+f.dailyMinutes)?+f.dailyMinutes:0;return f};
+ function bucket(p,id,date=day()){const f=ensure(p);if(!f.history[date]||typeof f.history[date]!=='object')f.history[date]={};if(!f.history[date][id]||typeof f.history[date][id]!=='object')f.history[date][id]=blank();return f.history[date][id]}
+ function record(p,id,delta,date=day()){const b=bucket(p,id,date);for(const k of fields)b[k]=number(b[k])+number(delta[k]);return b}
+ function rangeDays(n,now=new Date()){return Array.from({length:n},(_,i)=>{const d=new Date(now);d.setDate(d.getDate()-n+1+i);return day(d)})}
+ function report(p,period='all',now=new Date()){const f=ensure(p),days=period==='all'?Object.keys(f.history).filter(d=>/^\d{4}-\d{2}-\d{2}$/.test(d)).sort():rangeDays(+period||7,now);const games={},daily=[];const add=(id,x)=>{const g=games[id]||(games[id]=blank());for(const k of fields)g[k]+=number(x[k])};if(period==='all')for(const [id,x] of Object.entries(f.legacy))add(id,x);for(const date of days){let seconds=0;for(const [id,x] of Object.entries(f.history[date]||{})){if(!x||typeof x!=='object')continue;add(id,x);seconds+=number(x.seconds)}daily.push({date,seconds})}const total=blank();for(const g of Object.values(games))for(const k of fields)total[k]+=number(g[k]);return {games,total,daily,legacy:period==='all'&&Object.values(f.legacy).some(x=>number(x.plays)||number(x.seconds))}}
+ const today=p=>report(p,'1').total.seconds;
+ function duration(s){s=Math.floor(number(s));const h=Math.floor(s/3600),m=Math.floor(s/60)%60;return h?`${h} h ${m} min`:m?`${m} min ${s%60} s`:`${s} s`}
+ const accuracy=(c,w)=>number(c)+number(w)?Math.round(number(c)/(number(c)+number(w))*100)+'%':'\u2014';
+ const csvCell=v=>{let s=String(v??'');if(/^(?:[\s\u0000-\u001f]*[=+\-@]|[\t\r\n])/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
+ function csv(p,period,catalog){const r=report(p,period);const rows=[['Profil','Razdoblje','Igra','Aktivne sekunde','Spremljene partije','Dovrsene','Tocno','Netocno','Prekinute','Dovrsene avanture']];for(const g of catalog){const s=r.games[g.id]||blank();rows.push([p.name,period==='all'?'Ukupno':period+' dana',g.name,...fields.map(k=>Math.floor(s[k]))])}return '\ufeff'+rows.map(row=>row.map(csvCell).join(';')).join('\r\n')}
+ window.KWFamily={ensure,day,record,report,today,rangeDays,duration,accuracy,csv,blank,number};
+})();
