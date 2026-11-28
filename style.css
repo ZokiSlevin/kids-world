@@ -329,3 +329,53 @@ body.kw-reduced *,body.kw-reduced *::before,body.kw-reduced *::after{scroll-beha
 @media(display-mode:standalone){.app-shell{min-height:100dvh}.main{overscroll-behavior-y:contain}}
 
 @media(max-width:1100px) and (max-height:500px) and (orientation:landscape){body.game-mode .main{padding-top:env(safe-area-inset-top,0px)}}
+
+/* v1.0.1 Turbo Circuit: analog touch controls, no changes to other games. */
+.circuit-analog-controls{display:flex;flex-direction:column;gap:7px;touch-action:auto}
+.circuit-control-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:800;font-size:12px;color:#d2e4fa}
+.circuit-control-heading select{width:auto;max-width:75%;min-height:36px;font-size:12px;padding:6px 9px;border-radius:10px}
+.circuit-control-view[hidden]{display:none!important}
+.circuit-button-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;touch-action:none}
+.circuit-joy-wrap{display:flex;justify-content:center;align-items:center;gap:16px;min-width:0}
+.circuit-pad{position:relative;isolation:isolate;touch-action:none;user-select:none;-webkit-user-select:none;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#3f5682,#23345a 65%,#172743);border:1px solid #718ec2;box-shadow:inset 0 2px 10px #061428a0,0 3px 0 #14213b;border-radius:24px;cursor:grab;-webkit-tap-highlight-color:transparent}
+.circuit-pad.pad-active{cursor:grabbing;border-color:#bdd9ff}
+.circuit-joy{width:min(100%,186px);height:164px;flex:0 0 auto;background:linear-gradient(180deg,#2d785c45,transparent 45%,transparent 55%,#b64c6845),radial-gradient(ellipse at 50% 50%,#415985,#203453 67%,#172743)}
+.circuit-joy:before{content:'';position:absolute;inset:23px;border:1px solid #a9c6e63b;border-radius:50%;pointer-events:none}
+.pad-cross{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent calc(50% - 1px),#9bb8e344 50%,transparent calc(50% + 1px)),linear-gradient(0deg,transparent calc(50% - 1px),#9bb8e344 50%,transparent calc(50% + 1px))}
+.pad-label{position:absolute;font-size:10px;font-weight:900;line-height:1;pointer-events:none;white-space:nowrap;z-index:1;color:#d8e6ff;text-shadow:0 1px 3px #0c1b33}
+.pad-n{top:8px;left:50%;transform:translateX(-50%);color:#b1ffd4}.pad-s{bottom:8px;left:50%;transform:translateX(-50%);color:#ffbbba}.pad-w{left:9px;top:50%;transform:translateY(-50%)}.pad-e{right:9px;top:50%;transform:translateY(-50%)}
+.circuit-thumb{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;pointer-events:none;font-size:25px;color:#20375a;background:radial-gradient(circle at 32% 24%,#fff8d8,#f5d170 48%,#b98634 100%);border:2px solid #fff1b8;box-shadow:0 3px 9px #07152cbf,inset 0 1px 2px #ffffffa0}
+.circuit-axis-readout{display:grid;gap:4px;min-width:70px;text-align:left}.circuit-axis-readout small{font-size:9px;color:#b5c9ea;font-weight:800}.circuit-axis-readout b{font-size:13px;color:#ffdc83;margin-bottom:7px;font-variant-numeric:tabular-nums}
+.circuit-control-note{font-size:11px;color:#c1d6ef;text-align:center;margin:5px 0 0;line-height:1.35}
+.circuit-dual{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px;align-items:center}
+.circuit-slider-card{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:12px;min-width:0}.circuit-slider-card small{color:#c0d3f1;font-size:10px}
+.circuit-steer{width:100%;max-width:240px;height:66px;border-radius:32px}.circuit-steer .pad-cross{background:linear-gradient(0deg,transparent calc(50% - 3px),#b5d0f43e 50%,transparent calc(50% + 3px));inset:0 16px}.circuit-pedal{width:100px;max-width:100%;height:150px;border-radius:28px;background:linear-gradient(180deg,#296e59 0%,#263957 48%,#263957 52%,#843d59 100%)}.circuit-pedal .pad-cross{background:linear-gradient(90deg,transparent calc(50% - 3px),#c7d8f34d 50%,transparent calc(50% + 3px));inset:16px 0}
+@media(max-width:420px){.circuit-joy{width:154px;height:142px}.circuit-thumb{width:40px;height:40px;font-size:22px}.circuit-joy-wrap{gap:12px}.circuit-pedal{height:132px}.circuit-control-heading select{max-width:72%;font-size:11px}.circuit-control-note{font-size:10px}.circuit-tools{margin-top:8px}}
+/* On touch devices in landscape keep both track and controls visible, side by side. */
+@media(orientation:landscape) and (max-height:540px){
+ .circuit-premium{display:grid;grid-template-columns:minmax(0,1fr) minmax(175px,32%);gap:6px 12px;align-items:start}
+ .circuit-premium .game-hud{grid-column:1/-1;width:100%;margin:0 auto 2px}
+ .circuit-premium .circuit-stage{grid-column:1;grid-row:2;max-width:min(100%,calc((100dvh - 140px)*1.3667));margin:0 auto}
+ .circuit-premium .circuit-analog-controls{grid-column:2;grid-row:2;width:100%;margin:0;gap:4px}
+ .circuit-premium .circuit-tools{grid-column:2;grid-row:3;width:100%;margin:0;flex-wrap:wrap}
+ .circuit-premium .circuit-info{grid-column:1;grid-row:3;width:100%;margin:0 auto}
+ .circuit-premium .hint-text,.circuit-premium #message{grid-column:1/-1;margin:2px auto}
+ .circuit-control-heading{flex-wrap:wrap;gap:3px}.circuit-control-heading select{max-width:100%;width:100%}
+ .circuit-joy-wrap{gap:5px}.circuit-joy{width:clamp(110px,19vw,156px);height:132px}.circuit-axis-readout{min-width:44px}.circuit-axis-readout b{font-size:10px}.circuit-axis-readout small{font-size:8px}.circuit-control-note{font-size:10px}.circuit-pedal{height:126px}.circuit-thumb{width:40px;height:40px}
+}
+
+@media(orientation:landscape) and (max-height:540px){
+ body:has(#gameContent.circuit-premium) .topbar{display:none}
+ body:has(#gameContent.circuit-premium) .game-heading{margin-bottom:5px;gap:8px}
+ body:has(#gameContent.circuit-premium) .game-heading h1{font-size:17px}
+ body:has(#gameContent.circuit-premium) .game-heading p{font-size:10px;margin:0}
+ body:has(#gameContent.circuit-premium) .game-heading .tools button,body:has(#gameContent.circuit-premium) .game-heading .back{min-height:32px;padding:5px 8px;font-size:12px}
+ body:has(#gameContent.circuit-premium) .journey-live{padding:5px 9px;margin:4px 0;font-size:10px;gap:3px}
+ body:has(#gameContent.circuit-premium) .journey-live strong{font-size:11px}
+ body:has(#gameContent.circuit-premium) .journey-meter-wrap{margin:0;gap:5px}
+ .circuit-premium .game-hud .hud-item{padding:4px 6px;min-height:0}
+ .circuit-premium .game-hud .hud-item strong{font-size:13px}
+ .circuit-premium .game-hud .hud-item span{font-size:9px}
+ .circuit-premium .circuit-stage{max-width:min(100%,calc((100dvh - 134px)*1.3667))}
+ .circuit-premium .circuit-info>div{padding:5px}
+}
