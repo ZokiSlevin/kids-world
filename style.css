@@ -389,3 +389,45 @@ body.kw-reduced *,body.kw-reduced *::before,body.kw-reduced *::after{scroll-beha
 @media(max-width:560px){.math-visual{padding:5px 7px}.math-visual svg{height:clamp(110px,38vw,153px)}.math-visual figcaption{font-size:11px}.maze-gesture-note{font-size:11px}.balloon-order span{padding:3px 6px;min-width:29px;font-size:13px}}
 
 .jg-tray-nav{display:flex;gap:7px;justify-content:flex-end;margin:0 0 7px}.jg-tray-nav[hidden]{display:none}.jg-tray-nav button{min-height:36px;padding:6px 11px;font-size:11px}.jg-tray-nav button:disabled{opacity:.5}
+
+/* 1.0.3 - Fun Touch & Play */
+.kw-position-strip{width:100%;flex:1 0 100%;grid-column:1/-1;padding:6px 10px 9px;border:1px solid #799bc95e;border-radius:14px;background:linear-gradient(145deg,#29466b,#203450);box-sizing:border-box}
+.kw-strip-label{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px;color:#e1ecff;font-size:12px;font-weight:800}.kw-strip-label small{font-size:10px;color:#b5cce6;font-weight:500}
+.kw-strip-track{height:50px;position:relative;touch-action:none;user-select:none;-webkit-user-select:none;cursor:ew-resize;border-radius:26px;background:linear-gradient(180deg,#162a49,#243957);border:1px solid #88a3c37a;box-shadow:inset 0 2px 7px #10172d80}.kw-strip-track i{position:absolute;top:50%;left:8%;right:8%;height:5px;transform:translateY(-50%);background:#8fb0d84a;border-radius:4px;pointer-events:none}.kw-strip-track b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:2px solid #fff2bd;background:radial-gradient(circle at 35% 25%,#fff8d3,#f5ce72 55%,#c4913a);width:43px;height:36px;display:grid;place-items:center;color:#25415c;border-radius:18px;font-size:12px;box-shadow:0 3px 8px #07162d99;pointer-events:none}.kw-strip-track.active{border-color:#ffdf86}.kw-strip-track:focus-visible{outline:2px solid #ffde89;outline-offset:2px}
+.kw-galaxy-flight .kw-galaxy-input{display:grid;gap:8px}.kw-galaxy-stick-wrap{display:flex;align-items:center;justify-content:center;gap:12px}.kw-galaxy-stick-wrap>div:last-child{max-width:170px;display:grid;gap:4px}.kw-galaxy-stick-wrap small{color:#bbd0ee;font-size:11px}.kw-galaxy-stick{width:146px;height:146px;position:relative;flex:none;border:1px solid #8da9de;background:radial-gradient(circle,#476292,#20334e 67%,#192b47);border-radius:50%;touch-action:none;user-select:none;cursor:grab;box-shadow:inset 0 2px 10px #07152a90}.kw-galaxy-stick.active{border-color:#ffdb83;cursor:grabbing}.kw-galaxy-stick span{position:absolute;font-size:13px;color:#c4d8f3;pointer-events:none}.gs-up{top:5%;left:50%;transform:translateX(-50%)}.gs-down{bottom:5%;left:50%;transform:translateX(-50%)}.gs-left{left:6%;top:50%;transform:translateY(-50%)}.gs-right{right:6%;top:50%;transform:translateY(-50%)}#galaxyThumb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:42px;height:42px;border:2px solid #fff3bf;border-radius:50%;background:radial-gradient(circle at 30% 20%,#fffae0,#f7cc70 65%,#b78438);color:#284463;box-shadow:0 3px 9px #08152c90;pointer-events:none}.kw-galaxy-flight canvas{touch-action:none}
+.kw-paint-quick{display:none}.kw-plot-touch{width:100%;border:1px solid #94d8bc55;cursor:pointer;touch-action:manipulation}.kw-plot-touch:active{filter:brightness(1.15)}.dh-target{touch-action:none}.dh-target[data-gesture=soap].ready::after{content:'Klizi spužvom'}.dh-target[data-gesture=rinse].ready::after{content:'Klizi tušem'}.dh-target[data-gesture=pet].ready::after{content:'Pomazi dina'}.kw-dino-rubbing .dh-target{border-color:#c5ffde;background:#b8ffd61b}.kw-dino-rubbing #dhFoam{filter:brightness(1.1)}
+@media(max-width:760px){
+ .kw-position-strip{padding:5px 8px 7px}.kw-strip-track{height:46px}.kw-strip-label{font-size:11px}.kw-strip-label small{font-size:9px}
+ .rocket-premium .game-controls .label{display:none}.rocket-premium .vertical-stage{height:clamp(250px,46dvh,440px)}.rocket-premium .game-controls button{min-height:38px}.fruit-controls{gap:5px}.fruit-controls button{min-height:38px}
+ .paint-layout{display:flex;flex-direction:column;gap:8px}.kw-paint-quick{display:grid;gap:6px;width:100%;padding:8px;border:1px solid #a17ac4;border-radius:14px;background:linear-gradient(145deg,#392952,#292441)}.kw-paint-quick-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) minmax(65px,1.4fr);gap:4px}.kw-paint-quick-row button{min-height:40px;padding:4px;font-size:19px;border:1px solid #987bc28c;border-radius:9px;background:#51416d;color:#fff}.kw-paint-quick-row button:last-child{font-size:12px}.kw-paint-quick-row button[aria-pressed=true]{border-color:#ffe08c;background:#665383}.kw-quick-colors{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px}.kw-quick-colors button{width:100%;aspect-ratio:1.4;border-radius:7px;background:var(--swatch);border:2px solid transparent;min-height:27px;cursor:pointer}.kw-quick-colors button[aria-pressed=true]{border-color:#fff;outline:2px solid #ffda7d;outline-offset:1px}.paint-premium:not(.kw-paint-expanded) .paint-layout>.game-controls{display:none}.paint-premium .paint-stage{height:clamp(260px,47dvh,490px);min-height:0;flex:none}.paint-layout>.game-controls{width:100%}
+ .kw-galaxy-flight .galaxy-scene{height:clamp(250px,44dvh,420px)}.kw-galaxy-stick{width:132px;height:132px}.kw-galaxy-flight .galaxy-controls>button[data-space-dir]{min-height:38px}
+}
+@media(max-height:500px) and (orientation:landscape) and (max-width:1100px){
+ .rocket-layout{grid-template-columns:minmax(0,1fr) minmax(165px,32%);grid-template-areas:'flight steer' 'flight cockpit';align-items:start}.rocket-premium .vertical-stage{height:clamp(155px,calc(100dvh - 130px),300px)}.rocket-premium .game-controls{margin:0}.rocket-cockpit{padding:6px}.rocket-cockpit .rocket-tip{display:none}.fruit-premium .adv-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(155px,32%)}.fruit-premium .fruit-stage{height:clamp(155px,calc(100dvh - 140px),300px)}.fruit-premium .fruit-mobile-goals{display:none}.kw-galaxy-flight{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,32%);gap:8px}.kw-galaxy-flight .galaxy-scene{height:clamp(180px,calc(100dvh - 110px),340px)}.kw-galaxy-stick-wrap{flex-direction:column;gap:4px}.kw-galaxy-stick-wrap>div:last-child{display:none}.kw-galaxy-flight .galaxy-controls{gap:4px}
+ body:has(#gameContent.rocket-premium) .topbar,body:has(#gameContent:has(.fruit-premium)) .topbar,body:has(#gameContent:has(.kw-galaxy-flight)) .topbar{display:none}
+ body:has(#gameContent:has(.kw-galaxy-flight)) .fun-hero{display:none}
+}
+/* Compact live mission title: preserve illustrated hero on setup and lobby. */
+@media(max-width:760px){
+ .fun-world:has(.kw-galaxy-flight) .fun-hero{min-height:66px;border-radius:13px}
+ .fun-world:has(.kw-galaxy-flight) .fun-hero>div{padding:8px 12px}
+ .fun-world:has(.kw-galaxy-flight) .fun-hero h2{font-size:17px;margin:1px 0}
+ .fun-world:has(.kw-galaxy-flight) .fun-hero p{display:none}
+ .fun-world:has(.kw-galaxy-flight) .fun-hero .disc-kicker{font-size:9px}
+ .kw-galaxy-flight .galaxy-scene{height:clamp(215px,calc(100dvh - 440px),365px)}
+ .kw-galaxy-stick{width:118px;height:118px}
+ .paint-premium .game-hud{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+ .paint-premium .hud-item strong{font-size:clamp(10px,3vw,14px);overflow-wrap:anywhere}
+ .paint-premium .hud-item span{font-size:8px}
+}
+@media(max-width:370px){
+ .rocket-premium .vertical-stage{height:clamp(215px,calc(100dvh - 385px),370px)}
+ .fruit-premium .fruit-stage{height:clamp(205px,calc(100dvh - 405px),340px)}
+ .kw-paint-quick{padding:6px}.kw-quick-colors{gap:3px}.kw-quick-colors button{min-height:24px}.paint-premium .paint-stage{height:clamp(230px,calc(100dvh - 370px),420px)}
+}
+@media(max-height:500px) and (orientation:landscape) and (max-width:1100px){
+ .rocket-premium .vertical-stage{height:clamp(145px,calc(100dvh - 126px),330px)}
+ .kw-galaxy-flight .galaxy-scene{height:clamp(175px,calc(100dvh - 116px),340px)}
+ .kw-galaxy-stick{width:106px;height:106px}
+ .paint-premium .paint-stage{height:clamp(180px,calc(100dvh - 130px),330px)}
+}
