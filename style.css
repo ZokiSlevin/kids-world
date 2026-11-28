@@ -460,3 +460,6 @@ body.kw-reduced *,body.kw-reduced *::before,body.kw-reduced *::after{scroll-beha
  .maze-premium .adv-panel{grid-template-columns:minmax(0,1fr);gap:5px}
  .maze-premium .maze-key-slots{width:100%;max-width:230px}
 }
+
+/* v1.0.6: save and reset controls */
+.kw-save-panel{margin:18px 0;padding:16px;border:1px solid #5977a6;border-radius:16px;background:#1b2e50}.kw-save-panel p,.kw-reset-panel p{margin:8px 0;line-height:1.55}.kw-save-reminder{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:14px 0}.kw-save-reminder p{margin:6px 0;font-size:13px}.kw-reset-panel label{display:block;margin:16px 0 6px}.kw-reset-panel select{width:100%;max-width:420px}.kw-reset-button{border-color:#e69da7!important;color:#ffd4d9!important}.kw-reset-panel button{margin-top:8px}@media(max-width:600px){.kw-save-reminder{align-items:stretch;flex-direction:column}.kw-reset-panel select,.kw-reset-panel button{width:100%}}
