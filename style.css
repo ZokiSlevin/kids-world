@@ -463,3 +463,11 @@ body.kw-reduced *,body.kw-reduced *::before,body.kw-reduced *::after{scroll-beha
 
 /* v1.0.6: save and reset controls */
 .kw-save-panel{margin:18px 0;padding:16px;border:1px solid #5977a6;border-radius:16px;background:#1b2e50}.kw-save-panel p,.kw-reset-panel p{margin:8px 0;line-height:1.55}.kw-save-reminder{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:14px 0}.kw-save-reminder p{margin:6px 0;font-size:13px}.kw-reset-panel label{display:block;margin:16px 0 6px}.kw-reset-panel select{width:100%;max-width:420px}.kw-reset-button{border-color:#e69da7!important;color:#ffd4d9!important}.kw-reset-panel button{margin-top:8px}@media(max-width:600px){.kw-save-reminder{align-items:stretch;flex-direction:column}.kw-reset-panel select,.kw-reset-panel button{width:100%}}
+
+/* v1.0.6.1: responsive offline update actions */
+.setting-row.kw-update-row{flex-wrap:wrap;align-items:center;gap:12px;min-width:0}
+.kw-update-copy{flex:1 1 220px;min-width:0;overflow-wrap:anywhere}
+.kw-update-actions{display:flex;flex:0 1 auto;flex-wrap:wrap;align-items:center;gap:10px;min-width:0;max-width:100%}
+.kw-update-actions button{flex:1 1 auto;min-width:0;max-width:100%;width:auto;min-height:44px;margin:0;white-space:normal;overflow-wrap:anywhere;line-height:1.35;text-align:center;justify-content:center}
+.kw-update-actions button[hidden]{display:none!important}
+@media(max-width:760px){.setting-row.kw-update-row{flex-direction:column;align-items:stretch;gap:10px}.kw-update-copy,.kw-update-actions{flex:0 1 auto;width:100%;min-width:0}.kw-update-actions{flex-direction:column;align-items:stretch}.kw-update-actions button{width:100%;flex:0 1 auto}}
